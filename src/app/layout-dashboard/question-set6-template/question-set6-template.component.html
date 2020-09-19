@@ -1,0 +1,9 @@
+<div *ngIf="Question.SubModuleId === 1">
+    <app-blindspot-template [Question]="Question"></app-blindspot-template>
+</div>
+<div *ngIf="Question.SubModuleId === 2">
+    <app-fixations-template [Question]="Question"></app-fixations-template>
+</div>
+<div *ngIf="Question.SubModuleId === 3">
+    <app-lines-template [Question]="Question"></app-lines-template>
+</div>

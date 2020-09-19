@@ -1,0 +1,53 @@
+<app-question-set [CurrentTestId]="CurrentTestId"></app-question-set>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-head-row">
+                    <div class="card-title">Dashboard</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div style="height: 356px;display: flex;align-items: center;justify-content: center;">
+                    <div *ngIf="Question.IsShowGoToNextSetButton;then DisplayNextButton else DisplayCompleteButton"></div>    
+                    <ng-template #DisplayNextButton>
+                        <button mat-button  
+                                (click)="GoToNextSet(Question.CurrentUserId,Question.NextSetId,Question.TestId,Question.NextTypeId)"
+                                type="button" 
+                                style="cursor: pointer;float: right;top: -25px;" 
+                                [disabled]="loading"
+                                class="mat-raised-button mat-primary" 
+                                [class.spinner]="loading">
+                                Go to Next Module
+                        </button>
+                    </ng-template>
+                    <ng-template #DisplayCompleteButton>
+                        <button mat-button  
+                                (click)="CompleteTest(Question.CurrentUserId,Question.TestId)"
+                                type="button" 
+                                style="cursor: pointer;float: right;top: -25px;" 
+                                [disabled]="loading"
+                                class="mat-raised-button mat-primary" 
+                                [class.spinner]="loading">
+                                Complete Test
+                        </button>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">ScoreCard -  {{Question.CurrentSetName}}</div>  
+            </div>
+            <div class="card-body">
+                <canvas class="hidden" id="canvas"></canvas>
+
+                <div id="barchart" style="border: 1px solid rgb(247, 230, 230)"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+.card {
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+
+}
+
+.card:hover {
+  box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2);
+}
+.card-header {
+    background-color: #3f51b5;
+    color: white;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+@keyframes spinner {
+	to {transform: rotate(360deg);}
+  }
+   
+  .spinner:before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	margin-top: -10px;
+	margin-left: -10px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	border-top-color: #000000;
+	animation: spinner .8s linear infinite;
+  }
+  .example-stretched-tabs {
+    max-width: 647px;
+    background-color: white;
+  }

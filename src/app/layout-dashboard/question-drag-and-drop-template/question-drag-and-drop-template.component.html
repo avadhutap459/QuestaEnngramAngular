@@ -1,0 +1,45 @@
+<app-question-set [CurrentTestId]="CurrentTestId"></app-question-set>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-head-row">
+                    <div class="card-title">{{Question.CurrentSetName}}</div>
+                    <div class="card-tools">
+                        <b>Question {{Question.CompletedQuestion}} of {{Question.TotalQuestion}}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div cdkDropList class="example-list mt-20" (cdkDropListDropped)="drop($event,Q.lstQuestionRes)"
+                    *ngFor="let Q of Question.lstQuestionModel,  index as i">
+                    <div *ngIf="Question.CurrentSetId === 3;then Set4_Content else Set5_content">here is ignored</div>    
+                            <ng-template #Set4_Content>
+                                <mat-label><b>Question - : </b> {{Q.Question}}</mat-label>
+                            </ng-template>
+                            <ng-template #Set5_content>
+                                <mat-label><b>Question - {{i + 1}} : </b> Rearrange order</mat-label>
+                            </ng-template> 
+                    
+                    <div class="example-box" *ngFor="let QuesRes of Q.lstQuestionRes,index as j" cdkDrag>
+                        <div class="drag-index">
+                            {{QuesRes.ResponseNumber}}
+                        </div>
+                        <div class="w-10 drag-icon">
+                            <i class="material-icons" cdkDragHandle>drag_handle</i>
+                        </div>
+                        <div class="w-100 drag-content">
+                            {{QuesRes.ResponseText}}
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" style="cursor: pointer;float: right;" mat-raised-button color="primary"
+                    [class.spinner]="loading" [disabled]="loading" (click)="SaveQuestion()">
+                    Submit  Set
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+   
+  .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    border-top-color: #000000;
+    animation: spinner .8s linear infinite;
+  }
+ 
+  
+   .panel {
+     background-color: #fff;
+     border-radius: 10px;
+     padding: 15px 25px;
+     position: relative;
+     width: 100%;
+     z-index: 10;
+   }
+   
+   .pricing-table {
+     display: flex;
+     flex-direction: column;
+     
+   }
+   
+   @media (min-width: 900px) {
+     .pricing-table {
+       flex-direction: row;
+     }
+   }
+   
+   .pricing-table * {
+     font-size: 14px !important;
+     font-weight: 400;
+   }
+   
+   .pricing-plan {
+     border-bottom: 1px solid #e1f1ff;
+     padding: 25px;
+   }
+   
+  
+   
+   @media (min-width: 900px) {
+     .pricing-plan {
+       border: 1px solid #e1f1ff;
+       flex-basis: 100%;
+       padding: 9px 9px;
+     }
+   
+    
+   }
+   
+   .pricing-img {
+     margin-bottom: 25px;
+     max-width: 100%;
+   }
+   
+   .pricing-header {
+     color: #888;
+     font-weight: 600;
+     letter-spacing: 1px;
+   }
+   
+   .pricing-features {
+     color: #016FF9;
+     font-weight: 600;
+     letter-spacing: 1px;
+   }
+   
+   .pricing-features-item {
+     
+     font-size: 12px;
+     line-height: 1.5;
+     padding: 15px 0;
+   }
+   
+   .pricing-features-item:last-child {
+     border-bottom: 1px solid #e1f1ff;
+   }
+   
+   
+   
+   .background-color-blue{
+     background-color: #3f51b5;
+     color: white;
+   }
+   .pricing-plan.background-color-blue{
+     background-color: #3f51b5;
+     color: white;
+   }
+   .font-color{
+       color: white;
+   }
+   ul {
+    display: block;
+    list-style-type: none;
+    margin-block-start: -1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+}

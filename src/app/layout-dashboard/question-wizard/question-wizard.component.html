@@ -1,0 +1,31 @@
+
+<div *ngIf="this.IsQuestionDisplay">
+    <div *ngIf="Question.CurrentSetId === 1 || Question.CurrentSetId === 4">
+        <app-question-template [Question]="Question"></app-question-template>
+    </div>
+    <div *ngIf="Question.CurrentSetId === 2">
+        <app-question-table-template [Question]="Question"></app-question-table-template>
+    </div>
+    <div *ngIf="Question.CurrentSetId === 5 || Question.CurrentSetId == 3">
+        <app-question-drag-and-drop-template [Question]="Question"></app-question-drag-and-drop-template>
+    </div>
+    <div *ngIf="Question.CurrentSetId === 6">
+        <app-question-set6-template [Question]="Question"></app-question-set6-template>
+    </div>
+    <!--<div *ngIf="Question.CurrentSetId === 2;then QuestionTableFormate else QuestionTemplateFormate"></div>    
+    <ng-template #QuestionTableFormate>
+        <app-question-table-template [Question]="Question"></app-question-table-template>
+    </ng-template>
+    <ng-template #QuestionTemplateFormate>
+        <app-question-template [Question]="Question"></app-question-template>
+    </ng-template>-->
+</div>
+<div *ngIf="this.IsTestComplete">
+    <app-complete-test [Question]="Question"></app-complete-test>
+</div>
+<div *ngIf="this.IsScordBoardDisplay">
+    <app-score-template [Question]="Question"></app-score-template>
+</div>
+
+
+

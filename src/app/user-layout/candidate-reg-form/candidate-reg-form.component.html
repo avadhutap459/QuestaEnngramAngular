@@ -1,0 +1,103 @@
+<br />
+<mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab label="Registration">
+        <div class="card">
+            <div class="card-body">
+                <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.Title.errors }">
+								<mat-label>Title</mat-label>
+								<select matNativeControl 
+										placeholder="Title"
+										formControlName="Title"
+										[(ngModel)]="UserModel.Title">
+								  <option value="" selected></option>
+								  <option *ngFor="let T of Title" [value]="T.Value">
+									{{T.Value}}
+								  </option>
+								</select>
+								<mat-error *ngIf="f.Title.errors !== null && f.Title.errors.required">
+									Please select title
+								</mat-error>
+							  </mat-form-field>
+						</div>
+                        <div class="form-group col-md-4">
+                            <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                                <mat-label>First Name</mat-label>
+								<input matInput
+									   placeholder="First Name"
+									   formControlName="firstName"
+                                       [(ngModel)]="UserModel.FirstName">
+								<mat-error *ngIf="f.firstName.errors !== null && f.firstName.errors.required">
+										Please enter first name
+								</mat-error>
+                            </mat-form-field>
+						</div>
+						<div class="form-group col-md-4">
+                            <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                <mat-label>Last Name</mat-label>
+								<input matInput
+									   placeholder="Last Name"
+									   formControlName="lastName"
+                                       [(ngModel)]="UserModel.LastName">
+								<mat-error *ngIf="f.lastName.errors !== null && f.lastName.errors.required">
+										Please enter last name
+								</mat-error>
+                            </mat-form-field>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <mat-label>Email</mat-label>
+								<input matInput
+									   placeholder="Email"
+									   formControlName="email"
+                                       [(ngModel)]="UserModel.UserEmail">
+								<mat-error *ngIf="f.email.errors !== null && f.email.errors.required">
+										Please enter email id
+								</mat-error>
+								<mat-error *ngIf="f.email.errors !== null   && f.email.errors.email">
+									Please valid email
+								</mat-error>
+                            </mat-form-field>
+						</div>
+						<div class="form-group col-md-6">
+							<mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <mat-label>Phone Number</mat-label>
+								<input matInput
+									   placeholder="PhoneNumber"
+									   formControlName="PhoneNumber"
+                                       [(ngModel)]="UserModel.PhoneNumber">
+								<mat-error *ngIf="f.PhoneNumber.errors !== null && f.PhoneNumber.errors.required">
+										Please enter phone number
+								</mat-error>
+								<mat-error *ngIf="f.PhoneNumber.errors !== null  && f.PhoneNumber.errors.maxLength">
+									Number digit should not greater than 10
+								</mat-error>
+                            </mat-form-field>
+						</div>
+					</div>
+                    <div class="form-row">
+						<div *ngIf="registerForm.invalid;then FormValidation else loading_content"></div>
+                        <ng-template #FormValidation>
+                            <div class="form-group col-md-12">
+                                <button mat-button type="submit" class="mat-raised-button mat-primary"
+                                    [class.spinner]="loading" [disabled]="registerForm.invalid" style="width: 100%;">Create
+                                    Registration</button>
+                            </div>
+                        </ng-template>
+                        <ng-template #loading_content>
+                            <div class="form-group col-md-12">
+                                <button mat-button type="submit" class="mat-raised-button mat-primary"
+                                    [class.spinner]="loading" [disabled]="loading" style="width: 100%;">Create
+                                    Registration</button>
+                            </div>
+						</ng-template>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

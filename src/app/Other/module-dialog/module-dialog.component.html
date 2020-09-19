@@ -1,0 +1,112 @@
+<div *ngIf="this.data.CurrentSetId === 1">
+    <mat-dialog-content>
+
+        <p><u>Module 1 </u></p>
+
+        <p>
+            For this section, please choose one of the five options given with each statement,
+            depending on how often you think, feel or act that way.
+            <b><i>
+                    It's important to keep in mind the context of your life in general and not just your work
+                    environment.
+                    Also, while responding, look at your life as a whole (since childhood till date) rather than the
+                    present
+                    situation.
+                </i>
+            </b>
+        </p>
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Ok</button>
+    </div>
+
+</div>
+<div *ngIf="this.data.CurrentSetId === 2">
+    <mat-dialog-content>
+        <p><u>Module 2 </u></p>
+
+        <p>
+            From the given paired statements please choose the option that you relate to the most.
+            <b><i>
+                    Keep the focus on your life in general and not just your work environment;
+                    and your life as a whole (since childhood till date) rather than the present situation.
+                </i>
+            </b>
+        </p>
+
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Ok</button>
+    </div>
+</div>
+<div *ngIf="this.data.CurrentSetId === 5">
+    <mat-dialog-content>
+        <p><u>Module 3 </u></p>
+        <p>
+            Arrange the 3 given options in the order of preference from
+            most applicable to you to least applicable to you.
+            <br />
+            While responding to this section keep
+            <b>
+                <i>
+                    in mind the context of your life in general and not just your work environment;
+                    and your life as a whole (since childhood till date) rather than the present situation.
+                </i>
+            </b>
+        </p>
+
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Ok</button>
+    </div>
+</div>
+<div *ngIf="this.data.CurrentSetId === 6">
+    <mat-dialog-content>
+        <p><u>Module 4 </u></p>
+        <p>
+            Part A - Choose one of the five options given with each statement depending on how much you relate to them.
+            Part B – There are two statements given, statements A and B. First choose which statement do you relate to
+            the most and then drag the scale from 1 to 4 depending on how much you relate to the statement. Note that 4
+            is most relatable and 1 is least relatable in both directions.
+
+        </p>
+
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Ok</button>
+    </div>
+</div>
+<div *ngIf="this.data.CurrentSetId === 3">
+    <mat-dialog-content>
+        <p><u>Module 5 </u></p>
+        <p>
+            For this section, please arrange the three given options in the order of preference from most applicable to
+            you to least applicable to you.
+            <b>
+                <i>
+                    Keep in mind to respond in the context of your life in general and as a whole.
+                </i>
+            </b>
+        </p>
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Ok</button>
+    </div>
+</div>
+
+<div *ngIf="this.data.CurrentSetId === 4">
+    <mat-dialog-content>
+        <p><u>Module 6 </u></p>
+        <p>
+            Choose one of the five options given with each statement depending on how much you relate to them.
+
+            <br />
+            This section focuses more on your
+            <b> <i>current life situation and experiences (last 3 to 6 months) </i></b>, so while responding please keep
+            that in mind.
+        </p>
+    </mat-dialog-content>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Ok</button>
+    </div>
+</div>

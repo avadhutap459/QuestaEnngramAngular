@@ -1,0 +1,66 @@
+<app-question-set [CurrentTestId]="CurrentTestId"></app-question-set>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-head-row">
+                    <div class="card-title">{{Question.CurrentSetName}}</div>
+                    <div class="card-tools">
+                        <b>Question {{Question.CompletedQuestion}} of {{Question.TotalQuestion}}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <form #QuestionForm="ngForm" ngNativeValidate (ngSubmit)="SaveQuestion()">
+                    <div class="panel pricing-table" *ngFor="let Q of Question.lstQuestionModel;let j=index;">
+                        <div class="pricing-plan"
+                            [ngClass]="Q.ResponseValue === this.RetrunQuestionResponseId(Q,0)? 'background-color-blue':''">
+                            <ul class="pricing-features"
+                                [ngClass]="Q.ResponseValue === this.RetrunQuestionResponseId(Q,0)? 'font-color':''">
+                                <li class="pricing-features-item">Response A</li>
+                            </ul>
+                            {{RetrunQuestionResponseText(Q,0)}}
+                        </div>
+                        <div class="pricing-plan">
+                            <ul class="pricing-features">
+                                <li class="pricing-features-item" style="text-align: center;">Rating</li>
+                            </ul>
+                            <ngx-slider [(value)]="Q.Rating" [options]="options" (valueChange)="valueChange(Q)">
+                            </ngx-slider>
+                        </div>
+                        <div class="pricing-plan"
+                            [ngClass]="Q.ResponseValue === this.RetrunQuestionResponseId(Q,1)? 'background-color-blue':''">
+                            <ul class="pricing-features"
+                                [ngClass]="Q.ResponseValue === this.RetrunQuestionResponseId(Q,1)? 'font-color':''">
+                                <li class="pricing-features-item">Response B</li>
+                            </ul>
+                            {{RetrunQuestionResponseText(Q,1)}}
+                        </div>
+                        <div class="pricing-plan" style="display: none;">
+                            <div class="form-group" [class.has-error]="Q.QuesId.invalid && Q.QuesId.touched">
+                                <input required [name]="Q.QuesId" #{{Q.QuesId}}="ngModel" [(ngModel)]="Q.ResponseValue"
+                                    type="text" [id]="Q.QuesId" [value]="Q.ResponseValue" />
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="QuestionForm.invalid;then FormValidation else loading_content">here is ignored
+                    </div>
+                    <ng-template #FormValidation>
+                        <button type="submit" style="cursor: pointer;float: right;" mat-raised-button color="primary"
+                            [class.spinner]="loading" [disabled]="QuestionForm.invalid">
+                            Next Set
+                        </button>
+                    </ng-template>
+                    <ng-template #loading_content>
+                        <button type="submit" style="cursor: pointer;float: right;" mat-raised-button color="primary"
+                            [class.spinner]="loading" [disabled]="loading">
+                            Next Set
+                        </button>
+                    </ng-template>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
