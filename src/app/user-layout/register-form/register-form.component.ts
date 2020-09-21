@@ -169,7 +169,6 @@ export class RegisterFormComponent implements OnInit {
       if(this.IsDisableAllControl){
         for(let i=0;i<=this.UserModel.Industry.length -1 ;i++){
           this.selectedValues.push(this.UserModel.Industry[i]);
-          this.selectedValues.push(this.UserModel.Industry[i]);
         }
         
         this.candidateregisterForm.disable();

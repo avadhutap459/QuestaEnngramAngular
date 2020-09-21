@@ -27,6 +27,7 @@ export class LayoutDashboardComponent implements OnInit {
   //timer: number;
   //rxjsTimer = timer(1000, 1000);
   IsLooseFocus: boolean;
+  dialogRef : any;
   constructor(private _route: ActivatedRoute,
     public matDialog: MatDialog) { }
 
@@ -62,19 +63,25 @@ export class LayoutDashboardComponent implements OnInit {
 
   @HostListener('window:focus', ['$event'])
   onFocus(event) {
- 
+
     this.pauseTimer();
     this.timeLeft = 300;
     if (this.IsLooseFocus) {
       ///this.openDialog()
       var _username = this.Name;
       this.modelId = this.modelId + 1;
-      let dialogRef = this.matDialog.open(ConfirmationDialogComponent, {
+
+      if(this.dialogRef !== undefined){
+        if (!this.dialogRef.openDialogs || !this.dialogRef.openDialogs.length) return;
+      }
+      
+
+      this.dialogRef = this.matDialog.open(ConfirmationDialogComponent, {
         disableClose: true,
         id: "modal-component" + this.modelId,
         data: { name: _username },
       })
-      dialogRef.afterClosed().subscribe(res => {
+      this.dialogRef.afterClosed().subscribe(res => {
         if (res.data === "1") {
           this.IsLooseFocus = false;
         }

@@ -39,10 +39,10 @@ export class ScoreTemplateComponent implements OnInit {
     this.ScoreDetailForSet6 = Object.assign([], this.Question.ScoreCardForSet6);
     if (this.Question.CurrentSetId === 1) {
       this.height = 650;
-      this.weight = 850;
+      this.weight = 750;
     } else if (this.Question.CurrentSetId === 2) {
       this.height = 150;
-      this.weight = 800;
+      this.weight = 700;
     } else if (this.Question.CurrentSetId === 3) {
       this.height = 220;
       this.weight = 650;
