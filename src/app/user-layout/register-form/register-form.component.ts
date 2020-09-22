@@ -13,6 +13,7 @@ import { RequirevalidatorGender, RequirevalidatorQualification, Requirevalidator
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ErrorHandlerService } from 'src/app/Service/error-handler.service';
+import { OTPDialogComponent } from 'src/app/Other/otpdialog/otpdialog.component';
 
 
 @Component({
@@ -263,6 +264,13 @@ export class RegisterFormComponent implements OnInit {
       //  var now = new Date();
       //  now.setTime(now.getTime() + 1 * 3600 * 3000);
       //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
+
+     // this.matDialog.open(OTPDialogComponent, {
+     //   disableClose: true,
+     //   id: "OTP-component"
+     // })
+
+
         this.SaveCandidateDetail(this.UserModel);
       }, (err: HttpErrorResponse) => {
         console.log(err)

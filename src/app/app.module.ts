@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service'
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { ErrorPageComponent } from './ErrorHandler/error-page/error-page.compone
 import { ConfirmationDialogComponent } from './Other/confirmation-dialog/confirmation-dialog.component';
 import { InstructionDialoComponent } from './Other/instruction-dialo/instruction-dialo.component';
 import { ModuleDialogComponent } from './Other/module-dialog/module-dialog.component';
+import { OTPDialogComponent } from './Other/otpdialog/otpdialog.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { ModuleDialogComponent } from './Other/module-dialog/module-dialog.compo
     FixationsTemplateComponent,
     LinesTemplateComponent,
     ErrorPageComponent,
-    ModuleDialogComponent
+    ModuleDialogComponent,
+    OTPDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +84,8 @@ import { ModuleDialogComponent } from './Other/module-dialog/module-dialog.compo
       animationDuration: 300
     }),
     AppConfigModule,
-    NgxSliderModule
+    NgxSliderModule,
+    NgOtpInputModule
   ],
   providers: [QuestionService,
               CountryService,
@@ -91,6 +95,10 @@ import { ModuleDialogComponent } from './Other/module-dialog/module-dialog.compo
               GooleChart2Service,
               CookieService],
   bootstrap: [AppComponent],
-  entryComponents:[DialogComponent,ConfirmationDialogComponent,InstructionDialoComponent,ModuleDialogComponent]
+  entryComponents:[DialogComponent,
+                   ConfirmationDialogComponent,
+                   InstructionDialoComponent,
+                   ModuleDialogComponent,
+                   OTPDialogComponent]
 })
 export class AppModule { }

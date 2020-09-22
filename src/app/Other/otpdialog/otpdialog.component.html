@@ -1,0 +1,10 @@
+
+<div mat-dialog-content>
+    <p>Enter verification code</p> <span style="text-align: right;">{{count}}</span>
+    <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" 
+     [config]="config"></ng-otp-input>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button>No Thanks</button>
+    <button mat-button>Ok</button>
+  </div>

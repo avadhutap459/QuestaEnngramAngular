@@ -29,6 +29,7 @@
     "jspdf": "^2.1.1",
     "ng-circle-progress": "^1.5.1",
     "ng-multiselect-dropdown": "^0.2.10",
+    "ng-otp-input": "^1.7.1",
     "ngb-modal": "^1.0.5",
     "ngx-cookie-service": "^3.0.4",
     "ngx-countup": "^7.3.1",
