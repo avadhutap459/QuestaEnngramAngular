@@ -152,8 +152,8 @@ export class ScoreTemplateComponent implements OnInit {
   public drawBarChartForSet6() {
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'TypeName');
-    data.addColumn('number', 'Personality');
     data.addColumn('number', 'Presence');
+    data.addColumn('number', 'Personality');
 
     this.ScoreDetailForSet6.forEach(item => {
       data.addRows([
