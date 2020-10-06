@@ -35,7 +35,7 @@ export function RequirevalidatorForState(CountryControlName: string,stateControl
     return (formGroup: FormGroup) => {
         const control = formGroup.controls[CountryControlName];
         const matchingControl = formGroup.controls[stateControlName];
-        if (control.value === 1 && (matchingControl.value === undefined || matchingControl.value === null || matchingControl.value === "")) {
+        if (control.value === 1 && (matchingControl.value === undefined || matchingControl.value === null || matchingControl.value === "" || matchingControl.value ===0)) {
             matchingControl.setErrors({ validstate: true });
         } else {
             matchingControl.setErrors(null);

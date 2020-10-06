@@ -47,3 +47,12 @@
     max-width: 647px;
     background-color: white;
   }
+  .div1 {
+    width: 800px;
+    height: 70px;
+    border: 1px solid black;
+  }
+
+.alert-info {
+    width: 61%;
+}

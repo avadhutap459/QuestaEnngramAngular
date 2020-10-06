@@ -36,7 +36,8 @@ export class CandidateRegFormComponent implements OnInit {
     MaritalStatus:null,
     Industry : [],
     QualificationTxt:'',
-    EmployeeStatus:null
+    EmployeeStatus:null,
+    ProfileId:null
   };
 
   constructor(private formBuilder: FormBuilder

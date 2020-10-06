@@ -45,7 +45,8 @@ export class RegisterFormComponent implements OnInit {
     MaritalStatus: null,
     Industry: [],
     QualificationTxt: '',
-    EmployeeStatus: null
+    EmployeeStatus: null,
+    ProfileId:null
   };
   countries: CountryModel[];
   states: StateModel[];
@@ -64,6 +65,8 @@ export class RegisterFormComponent implements OnInit {
   searchTextboxControl = new FormControl();
   selectedValues = [];
   filteredOptions: Observable<any[]>;
+  DaysPassedLog : string;
+
 
   constructor(private _countrySVC: CountryService,
     private _userSvc: UserService,
@@ -83,15 +86,15 @@ export class RegisterFormComponent implements OnInit {
     });
     this.candidateregisterForm = this.formBuilder.group(
       {
-        Gender: ["", [Validators.required]],
+        Gender: ["", [Validators.required, Validators.min(1)]],
         GenderTxt: [""],
-        Age: ["", [Validators.required]],
-        MaritalStatus: ["", [Validators.required]],
-        Qualification: ["", [Validators.required]],
+        Age: ["", [Validators.required, Validators.min(1)]],
+        MaritalStatus: ["", [Validators.required, Validators.min(1)]],
+        Qualification: ["", [Validators.required, Validators.min(1)]],
         QualificationTxt: [""],
-        EmployeeStatus: ["", [Validators.required]],
+        EmployeeStatus: ["", [Validators.required, Validators.min(1)]],
         Industry: ["", [Validators.required]],
-        Country: ["", [Validators.required]],
+        Country: ["", [Validators.required, Validators.min(1)]],
         State: [""]
       },
       {
@@ -209,6 +212,7 @@ export class RegisterFormComponent implements OnInit {
 
   OnSubmitDetails() {
     this.loading = true;
+    this.DaysPassedLog = '';
     this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
       .subscribe((data: any) => {
         localStorage.setItem('userToken', data.access_token);
@@ -238,7 +242,8 @@ export class RegisterFormComponent implements OnInit {
             id: "modal-component",
             data: { TestId: TestId },
           })
-
+        } else {
+            this.DaysPassedLog = res.Error;
         }
       }, (err: HttpErrorResponse) => {
         console.log(err)

@@ -17,5 +17,6 @@ export class User {
     Industry:string[];
     QualificationTxt:string;
     EmployeeStatus:number;
+    ProfileId:number;
 }
 

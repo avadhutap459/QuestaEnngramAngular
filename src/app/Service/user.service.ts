@@ -80,7 +80,7 @@ export class UserService {
 
 
   SaveInitialCandidateData(Title, FirstName, LastName, email, PhoneNumber): Observable<any> {
-    return this._http.get<any>(this.rooturl + '/api/User/SaveInitialCandidateData' + '/' + Title + '/' + FirstName + '/' + LastName + '/' + email + '/' + PhoneNumber)
+    return this._http.get<any>(this.rooturl + '/api/User/SaveInitialCandidateData' + '/' + Title + '/' + FirstName + '/' + LastName + '/' + email + '/' + PhoneNumber+'/'+1)
       .pipe(
         catchError(this._ErrorHandlerService.handleError)
       );

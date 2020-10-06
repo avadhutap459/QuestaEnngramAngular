@@ -54,7 +54,7 @@ export class ScoreTemplateComponent implements OnInit {
       this.weight = 650;
     }
     else if (this.Question.CurrentSetId === 6) {
-      this.height = 370;
+      this.height = 250;
       this.weight = 650;
     }
 
@@ -178,33 +178,20 @@ export class ScoreTemplateComponent implements OnInit {
         }
       },
       fontSize: 11,
-      tooltip: { textStyle: { fontName: 'Roboto', fontSize: 12, bold: false } },
+      tooltip: { textStyle: { fontName: 'Roboto', fontSize: 5, bold: false } },
       chart: {
-        title: 'Typewise Scorecard'
+        title: 'TypeWise Scorecard'
       },
       bars: 'horizontal', // Required for Material Bar Charts.
-      series: {
-        0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
-        1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
-      },
-      axes: {
-        x: {
-          distance: { label: 'Score' }, // Bottom x-axis.
-          brightness: { side: 'top', label: 'Score' } // Top x-axis.
-        }
-      },
+     
       hAxis: {
-        viewWindow: {
-          min: 0,
-          max: 100
-        },
-        ticks: [0, 25, 50, 75, 100]
+        format: 'number'
       }
     };
 
     var barchart = new google.charts.Bar(document.getElementById('barchart'));
-    
- google.visualization.events.addListener(barchart, 'ready', function () {
+    barchart.draw(data, options);
+ /*google.visualization.events.addListener(barchart, 'ready', function () {
   var canvas;
   var domURL;
   var imageNode;
@@ -226,8 +213,8 @@ export class ScoreTemplateComponent implements OnInit {
     console.log(canvas.toDataURL('image/png'));
   }
   image.src = imageURL;
-});
-    barchart.draw(data, options);
+});*/
+   
     
   }
   GoToNextSet(UserId, SetId, TestId, TypeId) {
