@@ -12,14 +12,14 @@ import { CandidateRegFormComponent } from './user-layout/candidate-reg-form/cand
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/Register', pathMatch: 'full' },
-  {
+  { path: '', redirectTo: '/CandidateRegister/:Testid', pathMatch: 'full' },
+ /* {
     path: 'Register',
     component: UserLayoutComponent,
     children: [
       { path: '', component: CandidateRegFormComponent }
     ]
-  },
+  },*/
   {
     path: 'CandidateRegister/:Testid',
     component: UserLayoutComponent,

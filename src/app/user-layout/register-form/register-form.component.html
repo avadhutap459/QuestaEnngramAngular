@@ -8,7 +8,7 @@
   </div>
 <br/>
 
-<div *ngIf="!DaysPassedLog">
+<div *ngIf="DaysPassedLog">
     <div class="alert alert-danger">
         {{DaysPassedLog}}
     </div>
@@ -25,7 +25,8 @@
                         <div class="form-group col-md-6">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.Gender.errors }">
                                 <mat-label>Gender</mat-label>
-                                <mat-select placeholder="Gender *"
+                                <mat-select placeholder="Gender"
+                                            required
                                             formControlName="Gender" 
                                             [(ngModel)]="UserModel.UserGender"
                                             (selectionChange)="onChangeGender(UserModel.UserGender)">
@@ -43,7 +44,7 @@
                         <div class="form-group col-md-6" [hidden]="UserModel.UserGender==3?false:true" >
                             <mat-form-field class="example-full-width" >
                                 <mat-label>Other Gender</mat-label>
-                                <input  matInput  placeholder="Other Gender *"
+                                <input  matInput required  placeholder="Other Gender"
                                         formControlName="GenderTxt" 
                                         [(ngModel)]="UserModel.GenderTxt">
                                 <mat-error *ngIf="f.GenderTxt.errors !== null && f.GenderTxt.errors.validGendertxt">
@@ -56,7 +57,8 @@
                         <div class="form-group col-md-6">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.Age.errors }">
                                 <mat-label>Age</mat-label>
-                                <mat-select placeholder="Age *"
+                                <mat-select placeholder="Age"
+                                            required
                                             formControlName="Age" 
                                             [(ngModel)]="UserModel.UserAge">
                                     <mat-option>Select Age</mat-option>
@@ -72,7 +74,8 @@
                         <div class="form-group col-md-6">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.MaritalStatus.errors }">
                                 <mat-label>Marital Status</mat-label>
-                                <mat-select placeholder="Marital Status *"
+                                <mat-select placeholder="Marital Status"
+                                            required
                                             formControlName="MaritalStatus" 
                                             [(ngModel)]="UserModel.MaritalStatus">
                                     <mat-option>Select Marital Status</mat-option>
@@ -90,7 +93,8 @@
                         <div class="form-group col-md-6">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.Country.errors }">
                                 <mat-label>Country</mat-label>
-                                <mat-select placeholder="Country *"
+                                <mat-select placeholder="Country"
+                                            required
                                             formControlName="Country" 
                                             (selectionChange)="onChangeCountry(UserModel.Country)"
                                             [(ngModel)]="UserModel.Country">
@@ -107,7 +111,8 @@
                         <div class="form-group col-md-6" [hidden]="UserModel.Country==1?false:true">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.State.errors }">
                                 <mat-label>State</mat-label>
-                                <mat-select placeholder="State *"
+                                <mat-select placeholder="State"
+                                            required
                                             formControlName="State"
                                             [(ngModel)]="UserModel.State">
                                     <mat-option>Select State</mat-option>
@@ -125,7 +130,8 @@
                         <div class="form-group col-md-6">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.Qualification.errors }">
                                 <mat-label>Qualification</mat-label>
-                                <mat-select placeholder="Qualification *"
+                                <mat-select placeholder="Qualification"
+                                            required
                                             formControlName="Qualification" 
                                             [(ngModel)]="UserModel.Qualification">
                                     <mat-option>Select Qualification</mat-option>
@@ -141,7 +147,7 @@
                         <div class="form-group col-md-6" [hidden]="UserModel.Qualification==8?false:true" >
                             <mat-form-field class="example-full-width" >
                                 <mat-label>Other Qualification</mat-label>
-                                <input  matInput  placeholder="Other Qualification *"
+                                <input  matInput required  placeholder="Other Qualification"
                                         formControlName="QualificationTxt" 
                                         [(ngModel)]="UserModel.QualificationTxt">
                                 <mat-error *ngIf="f.QualificationTxt.errors !== null && f.QualificationTxt.errors.validQualificationtxt">
@@ -154,7 +160,8 @@
                         <div class="form-group col-md-12">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.EmployeeStatus.errors }">
                                 <mat-label>EmployeeStatus</mat-label>
-                                <mat-select placeholder="Employee Status *"
+                                <mat-select placeholder="Employee Status"
+                                            required
                                             formControlName="EmployeeStatus" 
                                             [(ngModel)]="UserModel.EmployeeStatus">
                                     <mat-option>Select Employee Status</mat-option>
@@ -172,7 +179,8 @@
                         <div class="form-group col-md-12">
                             <mat-form-field class="example-full-width" [ngClass]="{ 'is-invalid': submitted && f.Industry.errors }">
                                 <mat-select (openedChange)="openedChange($event)" 
-                                            placeholder="Current Industry *" 
+                                            placeholder="Current Industry" 
+                                            required
                                             formControlName="Industry" 
                                             [(ngModel)]="UserModel.Industry"
                                             multiple>
