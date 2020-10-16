@@ -55,7 +55,7 @@ export class LayoutDashboardComponent implements OnInit {
     this.matDialog.open(DialogComponent, {
       disableClose: true,
       id: "modal-component",
-      data: { name: _username },
+      data: { name: _username,TestId : this.TestId},
     })
 
 

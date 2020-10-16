@@ -19,10 +19,11 @@ export class DialogComponent implements OnInit {
     
   }
   Logout(){
+    debugger
     localStorage.removeItem('userToken');
     this._CookieSvc.delete('userTestIdCookie')
     this._CookieSvc.delete('userTokenCookie')
-    this._router.navigate(['/Register']);
-    
+    //this._router.navigate(['/Register']);
+    this._router.navigate(['/CandidateRegister', this.data.TestId]);
   }
 }

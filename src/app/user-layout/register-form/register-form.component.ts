@@ -270,9 +270,9 @@ export class RegisterFormComponent implements OnInit {
       //  now.setTime(now.getTime() + 1 * 3600 * 3000);
       //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
 
-     // this.matDialog.open(OTPDialogComponent, {
-     //   disableClose: true,
-     //   id: "OTP-component"
+      //this.matDialog.open(OTPDialogComponent, {
+      //  disableClose: true,
+      //  id: "OTP-component"
      // })
 
 

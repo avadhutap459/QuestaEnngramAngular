@@ -67,6 +67,7 @@ export enum ResponseType {
 export class ClsQuestionSetStatusCode {
     SetId: number
     SetName: string;
+    PartialSetName : string;
     StatusCode: string;
     CompletePercentage: string;
 }

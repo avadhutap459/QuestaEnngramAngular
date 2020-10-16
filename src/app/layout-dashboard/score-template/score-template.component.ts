@@ -48,7 +48,7 @@ export class ScoreTemplateComponent implements OnInit {
       this.weight = 650;
     } else if (this.Question.CurrentSetId === 4) {
       this.height = 470;
-      this.weight = 950;
+      this.weight = 750;
     } else if (this.Question.CurrentSetId === 5) {
       this.height = 220;
       this.weight = 650;

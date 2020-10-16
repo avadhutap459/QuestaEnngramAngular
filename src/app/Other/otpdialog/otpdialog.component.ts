@@ -12,7 +12,7 @@ export class OTPDialogComponent implements OnInit {
   
   config = {
     allowNumbersOnly: true,
-    length: 5,
+    length: 6,
     isPasswordInput: false,
     disableAutoFocus: false,
     placeholder: '',
@@ -28,6 +28,8 @@ export class OTPDialogComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.count = 0;
+    this.startTimer();
   }
   
   onOtpChange(otp) {
@@ -39,7 +41,7 @@ export class OTPDialogComponent implements OnInit {
       if(this.count > 0){
         this.count--;
       } else if(this.count == 0){
-        this.count = 10;
+        this.count = 30;
       }
     },1000)
   }
