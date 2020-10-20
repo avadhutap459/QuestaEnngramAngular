@@ -92,4 +92,11 @@ export class UserService {
     );
   }
 
+
+  GetOTP(PhoneNumber): Observable<any> {
+    return this._http.get<any>(this.rooturl + '/api/User/GetOTP'+'/'+PhoneNumber).pipe(
+      catchError(this._ErrorHandlerService.handleError)
+    );
+  }
+
 }

@@ -5,11 +5,14 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;
       {{count}}</p> 
+      <mat-error *ngIf="Error">{{Error}}</mat-error>
     <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" 
      [config]="config"></ng-otp-input>
-     <p><b>Note : </b> OTP is valid for 30 seconds</p>
+     <p><b>Note : </b> OTP send to your register mobile number.<br/> OTP is valid for 60 seconds</p>
   </div>
   <div mat-dialog-actions>
-    <button mat-button color="primary">Submit</button>
-    <button mat-button color="primary">Close</button>
+    <button mat-stroked-button [hidden]="IsResendBtn" [disabled]="IsSubmitbtn"   (click)="Submit()">Submit</button>
+    <button mat-button  [hidden]="!IsResendBtn" color="primary" (click)="Resend()">Resend</button>
+    <!--<button mat-button mat-dialog-close color="primary">Close</button>-->
+
   </div>

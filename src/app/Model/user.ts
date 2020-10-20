@@ -18,5 +18,6 @@ export class User {
     QualificationTxt:string;
     EmployeeStatus:number;
     ProfileId:number;
+    IsOTPRequire : boolean;
 }
 

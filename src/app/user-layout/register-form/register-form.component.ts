@@ -46,7 +46,8 @@ export class RegisterFormComponent implements OnInit {
     Industry: [],
     QualificationTxt: '',
     EmployeeStatus: null,
-    ProfileId:null
+    ProfileId: null,
+    IsOTPRequire: null
   };
   countries: CountryModel[];
   states: StateModel[];
@@ -65,8 +66,9 @@ export class RegisterFormComponent implements OnInit {
   searchTextboxControl = new FormControl();
   selectedValues = [];
   filteredOptions: Observable<any[]>;
-  DaysPassedLog : string;
-
+  DaysPassedLog: string;
+  OTPdialogRef: any;
+  modelId: number;
 
   constructor(private _countrySVC: CountryService,
     private _userSvc: UserService,
@@ -104,7 +106,7 @@ export class RegisterFormComponent implements OnInit {
         RequirevalidatorForState("Country", "State")]
       }
     );
-  //  this.StoreCookie();
+    //  this.StoreCookie();
 
     this.GetAllMasterFieldData();
 
@@ -112,7 +114,7 @@ export class RegisterFormComponent implements OnInit {
   }
 
   StoreCookie() {
-    
+
     if (this._CookieSvc.get("userTokenCookie") === null ||
       this._CookieSvc.get("userTokenCookie") === '' ||
       this._CookieSvc.get("userTokenCookie") === undefined) {
@@ -166,18 +168,18 @@ export class RegisterFormComponent implements OnInit {
   GetCandidateData() {
     this._userSvc.GetCandiateData(this.TestId).subscribe(data => {
       this.UserModel = data.CandidateData;
-      if(this.UserModel.Country !== 0){
+      if (this.UserModel.Country !== 0) {
         this.onChangeCountry(this.UserModel.Country);
       }
       this.IsDisableAllControl = data.IsDisableAllControl;
-      if(this.IsDisableAllControl){
-        for(let i=0;i<=this.UserModel.Industry.length -1 ;i++){
+      if (this.IsDisableAllControl) {
+        for (let i = 0; i <= this.UserModel.Industry.length - 1; i++) {
           this.selectedValues.push(this.UserModel.Industry[i]);
         }
-        
+
         this.candidateregisterForm.disable();
       }
-      
+
     }, error => {
       if (error.status !== 500) {
         this.ErrorLog = error;
@@ -243,7 +245,7 @@ export class RegisterFormComponent implements OnInit {
             data: { TestId: TestId },
           })
         } else {
-            this.DaysPassedLog = res.Error;
+          this.DaysPassedLog = res.Error;
         }
       }, (err: HttpErrorResponse) => {
         console.log(err)
@@ -257,29 +259,54 @@ export class RegisterFormComponent implements OnInit {
     if (this.candidateregisterForm.invalid) {
       return;
     }
-    if(this.selectedValues.length > 0){
+    if (this.selectedValues.length > 0) {
       this.UserModel.Industry = [];
-      for(let i=0;i<=this.selectedValues.length-1;i++){
+      for (let i = 0; i <= this.selectedValues.length - 1; i++) {
         this.UserModel.Industry.push(this.selectedValues[i]);
       }
     }
-    this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
-      .subscribe((data: any) => {
-        localStorage.setItem('userToken', data.access_token);
-      //  var now = new Date();
-      //  now.setTime(now.getTime() + 1 * 3600 * 3000);
-      //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
 
-      //this.matDialog.open(OTPDialogComponent, {
-      //  disableClose: true,
-      //  id: "OTP-component"
-     // })
+    this.modelId = this.modelId + 1;
 
+    if (this.OTPdialogRef !== undefined) {
+      if (!this.OTPdialogRef.openDialogs || !this.OTPdialogRef.openDialogs.length) return;
+    }
 
-        this.SaveCandidateDetail(this.UserModel);
-      }, (err: HttpErrorResponse) => {
-        console.log(err)
-      });
+    debugger
+    if (this.UserModel.IsOTPRequire === true) {
+      this.OTPdialogRef = this.matDialog.open(OTPDialogComponent, {
+        disableClose: true,
+        id: "OTP-component" + this.modelId,
+        data: { MobileNo: this.UserModel.PhoneNumber },
+      })
+      this.OTPdialogRef.afterClosed().subscribe(res => {
+      
+        if (res.data === "true") {
+          this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
+            .subscribe((data: any) => {
+              localStorage.setItem('userToken', data.access_token);
+              //  var now = new Date();
+              //  now.setTime(now.getTime() + 1 * 3600 * 3000);
+              //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
+              this.SaveCandidateDetail(this.UserModel);
+            }, (err: HttpErrorResponse) => {
+              console.log(err)
+            });
+        }
+      })
+    } else {
+      this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
+        .subscribe((data: any) => {
+          localStorage.setItem('userToken', data.access_token);
+          //  var now = new Date();
+          //  now.setTime(now.getTime() + 1 * 3600 * 3000);
+          //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
+          this.SaveCandidateDetail(this.UserModel);
+        }, (err: HttpErrorResponse) => {
+          console.log(err)
+        });
+    }
+
   }
 
   get f() {
@@ -332,7 +359,7 @@ export class RegisterFormComponent implements OnInit {
     }
   }
   GetFirstpostionValue(Data: string[]): string {
-    if(Data !== null){
+    if (Data !== null) {
       var length = Data.length;
       if (length > 0) {
         let IndustryName = Data[0].toString();
@@ -342,17 +369,17 @@ export class RegisterFormComponent implements OnInit {
     return '';
   }
   GetLengthIndustry(Data: string[]): boolean {
-    if(Data !== null){
+    if (Data !== null) {
       var length = Data.length;
       if (length > 1) {
         return true
       }
     }
-    
+
     return false
   }
   CountIndustryValue(Data: string[]): string {
-    if(Data !== null){
+    if (Data !== null) {
       var length = Data.length;
       var IndustryDisplay;
       if (length > 1) {
@@ -361,17 +388,17 @@ export class RegisterFormComponent implements OnInit {
         return IndustryDisplay
       }
     }
-    
+
     return '';
   }
   FilterIndustryCount(FilterIndustryData: any) {
-    if(FilterIndustryData !== null){
+    if (FilterIndustryData !== null) {
       var length = FilterIndustryData.length;
       if (length === 0) {
         return true
       }
     }
-    
+
     return false
   }
   /**End */
