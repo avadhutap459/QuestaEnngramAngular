@@ -1,4 +1,9 @@
 .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
     color: white;
     background-color: #3f51b5;
+    width: 267px;
+}
+
+button.btn.btn-primary.btn-sm{
+    width: 287px;
 }

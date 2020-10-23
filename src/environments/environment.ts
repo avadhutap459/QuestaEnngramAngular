@@ -2,10 +2,32 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+/// Start UAT Configuration
+
+export const environment = {
+  production: false,
+  apiEndpoint : 'https://d1zp46jyctcg05.cloudfront.net'
+};
+
+//END
+
+/// Start LIVE Configuration
+
+/* 
 export const environment = {
   production: false,
   apiEndpoint : 'https://dxmcm944tmuj2.cloudfront.net'
 };
+*/
+
+//END
+
+/*
+export const environment = {
+  production: false,
+  apiEndpoint : 'http://questaenngramapi-env.eba-6exk4uwq.ap-south-1.elasticbeanstalk.com'
+};
+*/
 
 /*
  * For easier debugging in development mode, you can import the following file

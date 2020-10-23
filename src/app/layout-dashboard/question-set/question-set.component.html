@@ -6,7 +6,7 @@
     <div class="col-md-2" *ngFor="let i of LoadExamStatusCode;let j=index;">
         <div class="card full-height" [ngSwitch]="i.StatusCode">
             <div class="card-body" *ngSwitchCase="'P'">
-                <div class="card-title">{{i.SetName}}</div>
+                <div class="card-title">{{i.PartialSetName}}</div>
                 <div class="card-category">
                     <circle-progress [percent]=i.CompletePercentage [radius]="50" [outerStrokeWidth]="5"
                         [innerStrokeWidth]="2" [outerStrokeColor]="'#1E35B2'" subtitle="In progress"
@@ -16,7 +16,7 @@
 
             </div>
             <div class="card-body" *ngSwitchCase="'C'">
-                <div class="card-title">{{i.SetName}}</div>
+                <div class="card-title">{{i.PartialSetName}}</div>
                 <div class="card-category">
                     <circle-progress [percent]=i.CompletePercentage [radius]="50" [outerStrokeWidth]="5"
                         [innerStrokeWidth]="2" [outerStrokeColor]="'#78C000'" subtitle="Complete"
@@ -26,7 +26,7 @@
 
             </div>
             <div class="card-body" *ngSwitchCase="'NS'">
-                <div class="card-title">{{i.SetName}}</div>
+                <div class="card-title">{{i.PartialSetName}}</div>
                 <div class="card-category">
                     <circle-progress [percent]=i.CompletePercentage [radius]="50" [outerStrokeWidth]="5"
                         [innerStrokeWidth]="2" [outerStrokeColor]="'#85929E'" subtitle="Not start"

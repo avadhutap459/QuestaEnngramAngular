@@ -272,7 +272,6 @@ export class RegisterFormComponent implements OnInit {
       if (!this.OTPdialogRef.openDialogs || !this.OTPdialogRef.openDialogs.length) return;
     }
 
-    debugger
     if (this.UserModel.IsOTPRequire === true) {
       this.OTPdialogRef = this.matDialog.open(OTPDialogComponent, {
         disableClose: true,

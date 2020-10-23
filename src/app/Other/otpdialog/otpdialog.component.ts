@@ -38,13 +38,15 @@ export class OTPDialogComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.count = 60;
+    this.count = 120;
     this.startTimer();
     this.IsSubmitbtn = true;
     this._userSvc.GetOTP(this.data.MobileNo).subscribe(data => {
       debugger  
       if(data.IsSend){
           this.OTPRecieve = data.OTPNumber;
+        } else {
+          this.Error = data.Log;
         }
     })
   }
@@ -56,6 +58,8 @@ export class OTPDialogComponent implements OnInit {
       debugger
       this.IsSubmitbtn = false;
       this.OTPEnter = otp;
+    } else {
+      this.IsSubmitbtn = true;
     }
     
   }
@@ -73,7 +77,6 @@ export class OTPDialogComponent implements OnInit {
   }
 
   Submit(){
-    debugger
     if(Number(this.OTPEnter) === this.OTPRecieve){
       this.dialogRef.close({ data: 'true' })
     } else {
@@ -88,7 +91,7 @@ export class OTPDialogComponent implements OnInit {
           this.OTPRecieve = data.OTPNumber;
           this.IsSubmitbtn = true;
           this.IsResendBtn = false;
-          this.count = 60;
+          this.count = 120;
         }
     })
   }
