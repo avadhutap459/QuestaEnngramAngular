@@ -47,7 +47,8 @@ export class RegisterFormComponent implements OnInit {
     QualificationTxt: '',
     EmployeeStatus: null,
     ProfileId: null,
-    IsOTPRequire: null
+    IsOTPRequire: null,
+    IsActive : null
   };
   countries: CountryModel[];
   states: StateModel[];
@@ -86,6 +87,16 @@ export class RegisterFormComponent implements OnInit {
       let id = parseInt(params.get('Testid'));
       this.TestId = id;
     });
+
+  /*  let CookieTestId = this._CookieSvc.get('userTestIdCookie');
+    if(parseInt(CookieTestId) !== this.TestId){
+      localStorage.removeItem('userToken');
+      this._CookieSvc.deleteAll();
+    }
+*/
+   // localStorage.removeItem('userToken');
+    //this._CookieSvc.delete('userTestIdCookie')
+
     this.candidateregisterForm = this.formBuilder.group(
       {
         Gender: ["", [Validators.required, Validators.min(1)]],
@@ -106,7 +117,7 @@ export class RegisterFormComponent implements OnInit {
         RequirevalidatorForState("Country", "State")]
       }
     );
-    //  this.StoreCookie();
+     // this.StoreCookie();
 
     this.GetAllMasterFieldData();
 
@@ -114,7 +125,6 @@ export class RegisterFormComponent implements OnInit {
   }
 
   StoreCookie() {
-
     if (this._CookieSvc.get("userTokenCookie") === null ||
       this._CookieSvc.get("userTokenCookie") === '' ||
       this._CookieSvc.get("userTokenCookie") === undefined) {
@@ -124,8 +134,8 @@ export class RegisterFormComponent implements OnInit {
       this._CookieSvc.delete('userTestIdCookie')
       this._CookieSvc.delete('userTokenCookie')
     } else {
-      let TestId = this._CookieSvc.get('userTestIdCookie');
-      this._router.navigate(['/QuestionSeries', TestId]);
+      let CookieTestId = this._CookieSvc.get('userTestIdCookie');
+      this._router.navigate(['/QuestionSeries', CookieTestId]);
     }
   }
 
@@ -218,9 +228,9 @@ export class RegisterFormComponent implements OnInit {
     this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
       .subscribe((data: any) => {
         localStorage.setItem('userToken', data.access_token);
-        var now = new Date();
-        now.setTime(now.getTime() + 1 * 3600 * 3000);
-        this._CookieSvc.set('userTokenCookie', data.access_token, now)
+      //  var now = new Date();
+      //  now.setTime(now.getTime() + 1 * 3600 * 3000);
+      //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
         this.SaveCandidateDetail(this.UserModel);
       }, (err: HttpErrorResponse) => {
         console.log(err)
@@ -245,7 +255,12 @@ export class RegisterFormComponent implements OnInit {
             data: { TestId: TestId },
           })
         } else {
-          this.DaysPassedLog = res.Error;
+          if(res.IsDayPassed){
+            this.DaysPassedLog = res.Error;
+          } else if(res.Isvalid){
+            this.DaysPassedLog = res.valid;
+          }
+          
         }
       }, (err: HttpErrorResponse) => {
         console.log(err)
@@ -279,14 +294,14 @@ export class RegisterFormComponent implements OnInit {
         data: { MobileNo: this.UserModel.PhoneNumber },
       })
       this.OTPdialogRef.afterClosed().subscribe(res => {
-      
+
         if (res.data === "true") {
-          this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
+          this._userSvc.userAuthencation(this.UserModel.TestId, '')
             .subscribe((data: any) => {
               localStorage.setItem('userToken', data.access_token);
-              //  var now = new Date();
-              //  now.setTime(now.getTime() + 1 * 3600 * 3000);
-              //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
+                var now = new Date();
+                now.setTime(now.getTime() + 1 * 3600 * 3000);
+                this._CookieSvc.set('userTokenCookie', data.access_token, now)
               this.SaveCandidateDetail(this.UserModel);
             }, (err: HttpErrorResponse) => {
               console.log(err)
@@ -294,12 +309,12 @@ export class RegisterFormComponent implements OnInit {
         }
       })
     } else {
-      this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
+      this._userSvc.userAuthencation(this.UserModel.TestId, '')
         .subscribe((data: any) => {
           localStorage.setItem('userToken', data.access_token);
-          //  var now = new Date();
-          //  now.setTime(now.getTime() + 1 * 3600 * 3000);
-          //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
+            var now = new Date();
+            now.setTime(now.getTime() + 1 * 3600 * 3000);
+            this._CookieSvc.set('userTokenCookie', data.access_token, now)
           this.SaveCandidateDetail(this.UserModel);
         }, (err: HttpErrorResponse) => {
           console.log(err)

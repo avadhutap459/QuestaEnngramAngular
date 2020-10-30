@@ -8,7 +8,7 @@
       <mat-error *ngIf="Error">{{Error}}</mat-error>
     <ng-otp-input #ngOtpInput (onInputChange)="onOtpChange($event)" 
      [config]="config"></ng-otp-input>
-     <p><b>Note : </b> OTP send to your register mobile number.<br/> OTP is valid for 120 seconds</p>
+     <p><b>Note : </b> OTP send to your register mobile number.<br/> OTP is valid for 5 minute</p>
   </div>
   <div mat-dialog-actions>
     <button type="button" class="btn btn-primary btn-sm" [hidden]="IsResendBtn" [disabled]="IsSubmitbtn" (click)="Submit()">Verify OTP</button>

@@ -45,7 +45,8 @@ export class UserService {
       MaritalStatus:User.MaritalStatus,
       Industry:User.Industry,
       QualificationTxt:User.QualificationTxt,
-      EmployeeStatus:User.EmployeeStatus
+      EmployeeStatus:User.EmployeeStatus,
+      IsActive : User.IsActive
     }
     let options = {
       headers: headers

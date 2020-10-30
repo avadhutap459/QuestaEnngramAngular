@@ -6,7 +6,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint : 'https://d1zp46jyctcg05.cloudfront.net'
+  apiEndpoint : 'https://dxmcm944tmuj2.cloudfront.net'
 };
 
 //END

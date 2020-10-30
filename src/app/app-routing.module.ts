@@ -52,7 +52,13 @@ const routes: Routes = [
     resolve : {list : ListResolverService},
     canActivate :[AuthGuard]
   },
-  { path: '**', component: PageNotFoundComponent }
+  {
+    path: 'PageNotFound',
+    component: UserLayoutComponent,
+    children: [
+      { path: '**', component: PageNotFoundComponent }
+    ]
+  }
 ];
 
 @NgModule({

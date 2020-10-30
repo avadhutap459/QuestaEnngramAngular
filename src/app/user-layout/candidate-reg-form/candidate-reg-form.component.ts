@@ -38,7 +38,8 @@ export class CandidateRegFormComponent implements OnInit {
     QualificationTxt:'',
     EmployeeStatus:null,
     ProfileId:null,
-    IsOTPRequire:null
+    IsOTPRequire:null,
+    IsActive : null
   };
 
   constructor(private formBuilder: FormBuilder

@@ -79,7 +79,6 @@ export class QuestionTemplateComponent implements OnInit {
         }
       },
       error =>{
-        debugger
         if (error.status !== 500) {
           this.ErrorLog = error;
           this._ErrorHandlerService.SaveErrorLog(this.ErrorLog).subscribe(

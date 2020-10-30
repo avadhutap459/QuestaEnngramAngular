@@ -19,5 +19,6 @@ export class User {
     EmployeeStatus:number;
     ProfileId:number;
     IsOTPRequire : boolean;
+    IsActive : boolean;
 }
 
