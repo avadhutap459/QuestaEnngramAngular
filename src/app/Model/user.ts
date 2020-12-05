@@ -20,5 +20,7 @@ export class User {
     ProfileId:number;
     IsOTPRequire : boolean;
     IsActive : boolean;
+    IsInitialMail : boolean;
+    IsAttachmentSent : boolean;
 }
 
