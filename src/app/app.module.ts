@@ -5,14 +5,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service'
 import { NgCircleProgressModule } from 'ng-circle-progress';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgOtpInputModule } from 'ng-otp-input';
 
 import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { DialogComponent } from './Other/dialog/dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
