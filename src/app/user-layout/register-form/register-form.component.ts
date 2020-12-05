@@ -48,7 +48,9 @@ export class RegisterFormComponent implements OnInit {
     EmployeeStatus: null,
     ProfileId: null,
     IsOTPRequire: null,
-    IsActive : null
+    IsActive : null,
+    IsInitialMail : null,
+    IsAttachmentSent : null
   };
   countries: CountryModel[];
   states: StateModel[];
@@ -87,13 +89,12 @@ export class RegisterFormComponent implements OnInit {
       let id = parseInt(params.get('Testid'));
       this.TestId = id;
     });
-
-  /*  let CookieTestId = this._CookieSvc.get('userTestIdCookie');
+  let CookieTestId = this._CookieSvc.get('userTestIdCookie');
     if(parseInt(CookieTestId) !== this.TestId){
       localStorage.removeItem('userToken');
       this._CookieSvc.deleteAll();
     }
-*/
+
    // localStorage.removeItem('userToken');
     //this._CookieSvc.delete('userTestIdCookie')
 
@@ -117,7 +118,7 @@ export class RegisterFormComponent implements OnInit {
         RequirevalidatorForState("Country", "State")]
       }
     );
-     // this.StoreCookie();
+      this.StoreCookie();
 
     this.GetAllMasterFieldData();
 
@@ -228,9 +229,9 @@ export class RegisterFormComponent implements OnInit {
     this._userSvc.userAuthencation(this.UserModel.UserEmail, '')
       .subscribe((data: any) => {
         localStorage.setItem('userToken', data.access_token);
-      //  var now = new Date();
-      //  now.setTime(now.getTime() + 1 * 3600 * 3000);
-      //  this._CookieSvc.set('userTokenCookie', data.access_token, now)
+        var now = new Date();
+        now.setTime(now.getTime() + 1 * 3600 * 3000);
+        this._CookieSvc.set('userTokenCookie', data.access_token, now)
         this.SaveCandidateDetail(this.UserModel);
       }, (err: HttpErrorResponse) => {
         console.log(err)

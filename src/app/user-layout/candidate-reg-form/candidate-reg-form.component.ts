@@ -39,7 +39,9 @@ export class CandidateRegFormComponent implements OnInit {
     EmployeeStatus:null,
     ProfileId:null,
     IsOTPRequire:null,
-    IsActive : null
+    IsActive : null,
+    IsInitialMail : null,
+    IsAttachmentSent : null
   };
 
   constructor(private formBuilder: FormBuilder
